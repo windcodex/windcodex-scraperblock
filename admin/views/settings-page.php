@@ -8,14 +8,37 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="gg-header-card">
-	<div class="gg-breadcrumb">
-		<a href="<?php echo esc_url( admin_url( 'options-general.php?page=scraperblock-settings' ) ); ?>"><?php esc_html_e( 'ScraperBlock', 'windcodex-scraperblock' ); ?></a>
-		<span class="gg-breadcrumb-sep">/</span>
-		<span id="gg-breadcrumb-current"><?php esc_html_e( 'General', 'windcodex-scraperblock' ); ?></span>
+	<div class="gg-header-card-inner">
+		<div class="gg-breadcrumb">
+			<a href="<?php echo esc_url( admin_url( 'options-general.php?page=scraperblock-settings' ) ); ?>"><?php esc_html_e( 'ScraperBlock', 'windcodex-scraperblock' ); ?></a>
+			<span class="gg-breadcrumb-sep">/</span>
+			<span id="gg-breadcrumb-current"><?php esc_html_e( 'General', 'windcodex-scraperblock' ); ?></span>
+		</div>
+		<div class="gg-help-wrap">
+			<button type="button" class="gg-help-btn" id="gg-help-btn" aria-expanded="false" aria-haspopup="true">
+				<span class="dashicons dashicons-editor-help"></span>
+				<?php esc_html_e( 'Help', 'windcodex-scraperblock' ); ?>
+			</button>
+			<div class="gg-help-dropdown" id="gg-help-dropdown" hidden>
+				<a href="https://docs.windcodex.com/docs/scraperblock" target="_blank" rel="noopener" class="gg-help-item">
+					<span class="gg-help-item-icon dashicons dashicons-media-document"></span>
+					<?php esc_html_e( 'Documentation', 'windcodex-scraperblock' ); ?>
+				</a>
+				<a href="https://wordpress.org/support/plugin/windcodex-scraperblock/reviews/#new-post" target="_blank" rel="noopener" class="gg-help-item">
+					<span class="gg-help-item-icon dashicons dashicons-star-filled"></span>
+					<?php esc_html_e( 'Submit a Review', 'windcodex-scraperblock' ); ?>
+				</a>
+				<a href="https://windcodex.com/product/woocommerce-bot-protection-plugin/" target="_blank" rel="noopener" class="gg-help-item">
+					<span class="gg-help-item-icon dashicons dashicons-awards"></span>
+					<?php esc_html_e( 'Upgrade to Pro', 'windcodex-scraperblock' ); ?>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
 
 <div class="wrap gg-wrap">
+<?php do_action( 'scraperblock_before_settings' ); ?>
 	<div class="gg-tabs-nav" role="tablist">
 		<button class="gg-tab-btn gg-tab-active" data-tab="general" data-breadcrumb="General" aria-selected="true"><?php esc_html_e( 'General', 'windcodex-scraperblock' ); ?></button>
 		<button class="gg-tab-btn" data-tab="logs" data-breadcrumb="Logs" aria-selected="false"><?php esc_html_e( 'Logs', 'windcodex-scraperblock' ); ?></button>

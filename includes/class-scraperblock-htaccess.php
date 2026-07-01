@@ -54,6 +54,9 @@ class ScraperBlock_Htaccess {
 	}
 
 	public static function remove_rules(): void {
+		if ( ! function_exists( 'get_home_path' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
 		$path = trailingslashit( get_home_path() ) . '.htaccess';
 		if ( ! file_exists( $path ) || ! wp_is_writable( $path ) ) {
 			return;

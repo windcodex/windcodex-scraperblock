@@ -28,6 +28,7 @@ class ScraperBlock_Loader {
 		$logger  = new ScraperBlock_Logger();
 		$limiter = new ScraperBlock_Rate_Limiter();
 		$admin   = new ScraperBlock_Admin( $rules, $logger );
+		$notices = new ScraperBlock_Notices();
 		$public  = new ScraperBlock_Public( $rules, $logger, $limiter );
 
 		$this->add_action( 'admin_menu', $admin, 'register_menu' );
@@ -41,6 +42,11 @@ class ScraperBlock_Loader {
 		$this->add_action( 'add_meta_boxes', $admin, 'register_meta_box' );
 		$this->add_action( 'save_post', $admin, 'save_meta_box' );
 		$this->add_filter( 'plugin_action_links_' . SCRAPERBLOCK_PLUGIN_BASE, $admin, 'plugin_action_links' );
+		// Notices: Pro upsell + review request (both inline, below header).
+		$this->add_action( 'scraperblock_before_settings',             $notices, 'render_pro_notice',    10 );
+		$this->add_action( 'scraperblock_before_settings',             $notices, 'render_review_notice', 20 );
+		$this->add_action( 'admin_enqueue_scripts',                    $notices, 'localize_nonce' );
+		$this->add_action( 'wp_ajax_scraperblock_dismiss_review',       $notices, 'ajax_dismiss' );
 
 		$this->add_action( 'template_redirect', $public, 'maybe_block_request', 0 );
 		$this->add_action( 'wp_head', $public, 'output_meta_tags', 1 );
