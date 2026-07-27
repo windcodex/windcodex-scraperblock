@@ -1,7 +1,7 @@
 === WindCodex ScraperBlock – Block AI Scrapers & Bots from WordPress & WooCommerce ===
 Contributors: windcodex
 Tags: bot protection, ai scraper, content protection, web scraper, woocommerce
-Requires at least: 5.8
+Requires at least: 6.9
 Tested up to: 7.0
 Stable tag: 1.0.1
 Requires PHP: 7.4
