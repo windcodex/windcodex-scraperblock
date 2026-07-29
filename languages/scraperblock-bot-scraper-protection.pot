@@ -1,165 +1,253 @@
+# Copyright (C) 2026 WindCodex
+# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: windcodex-scraperblock 1.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-05 05:22+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: WindCodex ScraperBlock 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/windcodex-scraperblock\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-29T06:00:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: windcodex-scraperblock\n"
 
-#: admin/views/settings-page.php
-msgid "%s ago"
+#. Plugin Name of the plugin
+#: windcodex-scraperblock.php
+msgid "WindCodex ScraperBlock"
 msgstr ""
 
-#: public/class-scraperblock-public.php
-msgid "403 Forbidden: Request blocked by ScraperBlock."
+#. Description of the plugin
+#: windcodex-scraperblock.php
+msgid "AI bot blocker for WordPress to protect content from scrapers with user-agent blocking, robots.txt and meta noai controls, per-page rules, and rate limiting."
 msgstr ""
 
-#: admin/views/settings-page.php
-msgid "Action"
+#. Author of the plugin
+#: windcodex-scraperblock.php
+msgid "WindCodex"
 msgstr ""
 
-#: admin/views/settings-page.php
-msgid "Basic Logs (last 50)"
+#. Author URI of the plugin
+#: windcodex-scraperblock.php
+msgid "https://www.windcodex.com"
 msgstr ""
 
-#: admin/class-scraperblock-admin.php
-msgid "Blocked bots in last 24 hours"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Bot / User Agent"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Clear Logs"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Configure core bot protection controls for your site."
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Core Features"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Default Bot List"
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Disable protection for this page/post"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "General"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "IP Address"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Logs"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Logs cleared."
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "No blocked requests yet � your site is clean or protection just started."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Open ScraperBlock Settings"
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Permission denied."
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Recommended: 30-120. Lower = stricter."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Reset all settings to default values?"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Reset to Defaults"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Review recent blocked requests for quick verification and tuning."
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Save Settings"
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Saving..."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-#: admin/views/settings-page.php
+#: admin/class-scraperblock-admin.php:21
+#: admin/class-scraperblock-admin.php:22
+#: admin/class-scraperblock-admin.php:217
+#: admin/views/settings-page.php:13
 msgid "ScraperBlock"
 msgstr ""
 
-#: admin/class-scraperblock-admin.php
-msgid "ScraperBlock - Live Dashboard"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Search bot signature..."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Settings"
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Settings reset to defaults."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Settings saved successfully."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Settings saved!"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "Time"
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Total logged blocks: %d"
-msgstr ""
-
-#: admin/views/settings-page.php
-msgid "URL"
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Unable to reset settings. Please try again."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
-msgid "Unable to save settings. Please try again."
-msgstr ""
-
-#: admin/class-scraperblock-admin.php
+#: admin/class-scraperblock-admin.php:54
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: admin/views/settings-page.php
+#: admin/class-scraperblock-admin.php:89
+msgid "Saving..."
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:90
+msgid "Settings saved!"
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:91
+msgid "Unable to save settings. Please try again."
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:92
+msgid "Reset all settings to default values?"
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:93
+#: admin/class-scraperblock-admin.php:131
+msgid "Settings reset to defaults."
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:94
+msgid "Unable to reset settings. Please try again."
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:103
+#: admin/class-scraperblock-admin.php:122
+#: admin/class-scraperblock-admin.php:139
+#: admin/class-scraperblock-admin.php:150
+#: admin/class-scraperblock-notices.php:102
+msgid "Permission denied."
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:114
+msgid "Settings saved successfully."
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:168
+msgid "ScraperBlock - Live Dashboard"
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:179
+msgid "Blocked bots in last 24 hours"
+msgstr ""
+
+#. translators: %d: total number of blocked requests logged.
+#: admin/class-scraperblock-admin.php:184
+#, php-format
+msgid "Total logged blocks: %d"
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:189
+msgid "Open ScraperBlock Settings"
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:232
+msgid "Disable protection for this page/post"
+msgstr ""
+
+#: admin/class-scraperblock-admin.php:259
+msgid "Settings"
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:37
+msgid "ScraperBlock Pro"
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:38
+msgid "— Content poisoning, honeypot traps, behavioural detection, real-time threat feed, geo-based blocking, IP allowlists, block scheduling, and advanced analytics."
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:41
+msgid "Explore ScraperBlock Pro →"
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:71
+msgid "⭐ Is ScraperBlock protecting your content?"
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:74
+msgid "You've been using ScraperBlock for 7 days — we hope it's keeping AI bots and content scrapers away from your site."
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:76
+msgid "If it's been helpful, a quick review on WordPress.org takes less than 2 minutes and helps thousands of other site owners find the plugin."
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:83
+msgid "⭐ Leave a Review"
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:86
+msgid "I already did ✓"
+msgstr ""
+
+#: admin/class-scraperblock-notices.php:89
+msgid "Maybe Later"
+msgstr ""
+
+#: admin/views/settings-page.php:15
+#: admin/views/settings-page.php:43
+msgid "General"
+msgstr ""
+
+#: admin/views/settings-page.php:20
+msgid "Help"
+msgstr ""
+
+#: admin/views/settings-page.php:25
+msgid "Documentation"
+msgstr ""
+
+#: admin/views/settings-page.php:29
+msgid "Submit a Review"
+msgstr ""
+
+#: admin/views/settings-page.php:33
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: admin/views/settings-page.php:44
+msgid "Logs"
+msgstr ""
+
+#: admin/views/settings-page.php:54
+msgid "Core Features"
+msgstr ""
+
+#: admin/views/settings-page.php:55
+msgid "Configure core bot protection controls for your site."
+msgstr ""
+
+#: admin/views/settings-page.php:89
 msgid "requests per minute"
+msgstr ""
+
+#: admin/views/settings-page.php:90
+msgid "Recommended: 30-120. Lower = stricter."
+msgstr ""
+
+#: admin/views/settings-page.php:101
+msgid "Default Bot List"
+msgstr ""
+
+#: admin/views/settings-page.php:104
+msgid "Search bot signature..."
+msgstr ""
+
+#: admin/views/settings-page.php:120
+msgid "Save Settings"
+msgstr ""
+
+#: admin/views/settings-page.php:123
+msgid "Reset to Defaults"
+msgstr ""
+
+#: admin/views/settings-page.php:132
+msgid "Basic Logs (last 50)"
+msgstr ""
+
+#: admin/views/settings-page.php:132
+msgid "Review recent blocked requests for quick verification and tuning."
+msgstr ""
+
+#: admin/views/settings-page.php:132
+msgid "Clear Logs"
+msgstr ""
+
+#: admin/views/settings-page.php:136
+msgid "Logs cleared."
+msgstr ""
+
+#: admin/views/settings-page.php:144
+msgid "Time"
+msgstr ""
+
+#: admin/views/settings-page.php:145
+msgid "Bot / User Agent"
+msgstr ""
+
+#: admin/views/settings-page.php:146
+msgid "IP Address"
+msgstr ""
+
+#: admin/views/settings-page.php:147
+msgid "URL"
+msgstr ""
+
+#: admin/views/settings-page.php:148
+msgid "Action"
+msgstr ""
+
+#. translators: %s: human-readable elapsed time (for example, "5 minutes").
+#: admin/views/settings-page.php:159
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: public/class-scraperblock-public.php:88
+msgid "403 Forbidden: Request blocked by ScraperBlock."
+msgstr ""
+
+#. translators: %s: ScraperBlock Pro plugin URL
+#: windcodex-scraperblock.php:47
+msgid "<strong>WindCodex ScraperBlock</strong> cannot be activated while <strong>ScraperBlock Pro</strong> is active."
 msgstr ""

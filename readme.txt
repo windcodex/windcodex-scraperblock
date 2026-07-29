@@ -3,7 +3,7 @@ Contributors: windcodex
 Tags: bot protection, ai scraper, content protection, web scraper, woocommerce
 Requires at least: 6.9
 Tested up to: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -177,6 +177,10 @@ ScraperBlock is a lightweight plugin. User-agent matching is a string comparison
 
 == Changelog ==
 
+= 1.0.2 =
+* Added: Loads plugin translations via `load_plugin_textdomain()` for full compatibility with translation plugins (Loco Translate, WPML String Translation) and manually installed language packs.
+* Updated: Regenerated the `.pot` translation template with the latest translatable strings.
+
 = 1.0.1 =
 * Improved: Settings page UI for better usability.
 * Added: Admin review request notice.
@@ -195,6 +199,9 @@ ScraperBlock is a lightweight plugin. User-agent matching is a string comparison
 * Live dashboard count (last 24 hours blocked requests).
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+Loads plugin translations for full compatibility with translation plugins and language packs. No database changes – safe to update.
 
 = 1.0.1 =
 Adds inline Pro upsell banner, review request notice, and help button in the settings header. No database changes – safe to update.
