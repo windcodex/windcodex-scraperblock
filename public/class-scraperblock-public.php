@@ -39,10 +39,13 @@ class ScraperBlock_Public {
 		}
 
 		if ( $this->rules->is_blocked_user_agent( $ua, $settings ) ) {
-			if ( ! $this->limiter->allow_request( $ip, $ua, $settings ) ) {
-				$this->deny( 'rate_limit', $ip, $ua );
-			}
 			$this->deny( 'blocked_user_agent', $ip, $ua );
+		}
+
+		// Rate limiting covers every anonymous visitor, so scrapers that fake a
+		// browser user agent are slowed down too. Logged-in users are exempt.
+		if ( ! is_user_logged_in() && ! $this->limiter->allow_request( $ip, $ua, $settings ) ) {
+			$this->deny( 'rate_limit', $ip, $ua, 429 );
 		}
 	}
 
@@ -71,21 +74,26 @@ class ScraperBlock_Public {
 		return trim( $output ) . "\n\n# ScraperBlock\n" . implode( "\n", $lines ) . "\n";
 	}
 
-	private function deny( string $reason, string $ip, string $ua ): void {
+	private function deny( string $reason, string $ip, string $ua, int $status = 403 ): void {
 		$this->logger->add(
 			array(
 				'ip'     => $ip,
 				'ua'     => $ua,
 				'uri'    => sanitize_text_field( wp_unslash( (string) ( $_SERVER['REQUEST_URI'] ?? '' ) ) ),
 				'reason' => $reason,
-				'action' => 'deny_403',
+				'action' => 'deny_' . $status,
 			)
 		);
 
-		status_header( 403 );
+		status_header( $status );
 		nocache_headers();
 		header( 'Content-Type: text/plain; charset=utf-8' );
-		echo esc_html__( '403 Forbidden: Request blocked by ScraperBlock.', 'windcodex-scraperblock' );
+		if ( 429 === $status ) {
+			header( 'Retry-After: 60' );
+			echo esc_html__( '429 Too Many Requests: Please slow down and try again in a minute.', 'windcodex-scraperblock' );
+		} else {
+			echo esc_html__( '403 Forbidden: Request blocked by ScraperBlock.', 'windcodex-scraperblock' );
+		}
 		exit;
 	}
 

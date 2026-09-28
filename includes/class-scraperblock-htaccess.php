@@ -39,18 +39,47 @@ class ScraperBlock_Htaccess {
 		);
 		$uas   = array_values( array_unique( array_filter( array_map( 'trim', $uas ) ) ) );
 
-		$lines = array(self::START, '<IfModule mod_rewrite.c>', 'RewriteEngine On');
-		foreach ( $uas as $ua ) {
-			$lines[] = 'RewriteCond %{HTTP_USER_AGENT} ' . preg_quote( $ua, '/' ) . ' [NC]';
+		// Without any conditions the RewriteRule would block every visitor.
+		if ( empty( $uas ) ) {
+			self::remove_rules();
+			return;
 		}
-		$lines[] = 'RewriteRule .* - [F,L]';
-		$lines[] = '</IfModule>';
-		$lines[] = self::END;
-		$block   = implode( PHP_EOL, $lines );
+
+		$block = implode( PHP_EOL, self::build_block_lines( $uas ) );
 
 		$current = file_exists( $path ) ? (string) file_get_contents( $path ) : '';
 		$updated = self::replace_block( $current, $block );
 		file_put_contents( $path, trim( $updated ) . PHP_EOL );
+	}
+
+	/**
+	 * Build the .htaccess block for the given user agents.
+	 *
+	 * Conditions are joined with [OR] - without it Apache ANDs consecutive
+	 * RewriteCond lines, so a request would have to match every bot at once.
+	 *
+	 * @param string[] $uas User-agent substrings to block.
+	 * @return string[]
+	 */
+	public static function build_block_lines( array $uas ): array {
+		$lines = array( self::START, '<IfModule mod_rewrite.c>', 'RewriteEngine On' );
+		$last  = count( $uas ) - 1;
+		foreach ( array_values( $uas ) as $i => $ua ) {
+			$lines[] = 'RewriteCond %{HTTP_USER_AGENT} ' . self::to_pattern( $ua ) . ( $i < $last ? ' [NC,OR]' : ' [NC]' );
+		}
+		$lines[] = 'RewriteRule .* - [F,L]';
+		$lines[] = '</IfModule>';
+		$lines[] = self::END;
+		return $lines;
+	}
+
+	/**
+	 * Turn a user-agent substring into a safe RewriteCond pattern. Whitespace
+	 * becomes \s because a literal space would end the pattern and break the
+	 * whole .htaccess file.
+	 */
+	private static function to_pattern( string $ua ): string {
+		return (string) preg_replace( '/\s+/', '\\s', preg_quote( $ua, '/' ) );
 	}
 
 	public static function remove_rules(): void {

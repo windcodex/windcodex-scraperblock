@@ -2,7 +2,7 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WindCodex ScraperBlock 1.0.3\n"
+"Project-Id-Version: WindCodex ScraperBlock 1.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/windcodex-scraperblock\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,8 +243,12 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
-#: public/class-scraperblock-public.php:88
+#: public/class-scraperblock-public.php:95
 msgid "403 Forbidden: Request blocked by ScraperBlock."
+msgstr ""
+
+#: public/class-scraperblock-public.php:93
+msgid "429 Too Many Requests: Please slow down and try again in a minute."
 msgstr ""
 
 #. translators: %s: ScraperBlock Pro plugin URL

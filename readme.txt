@@ -3,7 +3,7 @@ Contributors: windcodex
 Tags: bot protection, ai scraper, content protection, web scraper, woocommerce
 Requires at least: 6.9
 Tested up to: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -159,7 +159,7 @@ Go to **Settings > ScraperBlock > Logs**. The block log shows the last 50 blocke
 
 = Does rate limiting affect real visitors? =
 
-Rate limiting applies per IP address and is tuned to catch high-frequency automated requests – not normal browsing behaviour. Real visitors do not make hundreds of requests per minute the way scrapers do, so the threshold should not affect them under normal conditions.
+Rate limiting counts page requests per visitor (IP address plus browser) and applies to everyone who is not logged in. The default of 60 requests a minute is far more than a person browsing your site will make, so real visitors aren't affected, while scrapers that pretend to be a normal browser are slowed down. Visitors over the limit get a "429 Too Many Requests" response for a minute. Logged-in users are never rate limited.
 
 = Is this plugin compatible with Cloudflare? =
 
@@ -177,6 +177,11 @@ ScraperBlock is a lightweight plugin. User-agent matching is a string comparison
 4. **Per-page protection control** – Meta box in the post and page editor for individual page overrides.
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix: `.htaccess` blocking didn't block any bots. The rules are now combined correctly (with `[OR]`), so matching bots are rejected by Apache before WordPress loads. Existing rules are rewritten automatically the first time an admin page loads after updating.
+* Fix: A custom user agent containing a space could produce an invalid `.htaccess` file. Spaces are now escaped safely.
+* Fix: Basic Rate Limiting only applied to bots that were already blocked by user agent, so it never slowed anything down. It now applies to every visitor who is not logged in, which catches scrapers that pretend to be a normal browser. Requests over the limit get a 429 "Too Many Requests" response with a Retry-After header.
 
 = 1.0.3 =
 * Added: "Allow AI Search Bots" setting. When enabled, AI search and assistant bots (OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, MistralAI-User) can read your pages so your store can appear in AI answers, while AI training crawlers stay blocked. Applies to runtime blocking, robots.txt directives and `.htaccess` rules. Off by default, so existing protection is unchanged.
@@ -206,6 +211,9 @@ ScraperBlock is a lightweight plugin. User-agent matching is a string comparison
 * Live dashboard count (last 24 hours blocked requests).
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+Fixes `.htaccess` blocking, which didn't block any bots, makes custom user agents with spaces safe, and makes Basic Rate Limiting apply to all anonymous visitors. Update recommended.
 
 = 1.0.3 =
 Adds an option to allow AI search bots while keeping AI training crawlers blocked (off by default), plus a Docs link on the Plugins screen and Help menu improvements. No database changes – safe to update.

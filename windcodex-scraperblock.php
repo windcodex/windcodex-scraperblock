@@ -3,7 +3,7 @@
  * @wordpress-plugin
  * Plugin Name:       WindCodex ScraperBlock
  * Description:       AI bot blocker for WordPress to protect content from scrapers with user-agent blocking, robots.txt and meta noai controls, per-page rules, and rate limiting.
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            WindCodex
  * Author URI:        https://www.windcodex.com
  * License:           GPL v2 or later
@@ -19,7 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SCRAPERBLOCK_VERSION', '1.0.3' );
+define( 'SCRAPERBLOCK_VERSION', '1.0.4' );
 define( 'SCRAPERBLOCK_PLUGIN_FILE', __FILE__ );
 define( 'SCRAPERBLOCK_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SCRAPERBLOCK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -89,6 +89,23 @@ function scraperblock_activate(): void {
 	ScraperBlock_Htaccess::sync_rules( array_merge( $defaults, $current ) );
 }
 register_activation_hook( __FILE__, 'scraperblock_activate' );
+
+/**
+ * Rewrite .htaccess rules written by older versions, whose RewriteCond lines
+ * lacked [OR] and so never matched. Runs once, only if .htaccess blocking is on.
+ */
+function scraperblock_maybe_upgrade_htaccess(): void {
+	if ( (int) get_option( 'scraperblock_htaccess_format', 0 ) >= 2 ) {
+		return;
+	}
+	update_option( 'scraperblock_htaccess_format', 2 );
+
+	$settings = (array) get_option( 'scraperblock_settings', array() );
+	if ( ( $settings['enable_htaccess_blocking'] ?? 'no' ) === 'yes' && class_exists( 'ScraperBlock_Htaccess' ) ) {
+		ScraperBlock_Htaccess::sync_rules( array_merge( ScraperBlock_Rules::get_default_settings(), $settings ) );
+	}
+}
+add_action( 'admin_init', 'scraperblock_maybe_upgrade_htaccess' );
 
 function scraperblock_deactivate(): void {
 	require_once SCRAPERBLOCK_PLUGIN_DIR . 'includes/class-scraperblock-htaccess.php';
