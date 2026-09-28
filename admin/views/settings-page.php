@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 			<span id="gg-breadcrumb-current"><?php esc_html_e( 'General', 'windcodex-scraperblock' ); ?></span>
 		</div>
 		<div class="gg-help-wrap">
-			<button type="button" class="gg-help-btn" id="gg-help-btn" aria-expanded="false" aria-haspopup="true">
+			<button type="button" class="gg-help-btn" id="gg-help-btn" aria-expanded="false" aria-haspopup="true" aria-controls="gg-help-dropdown">
 				<span class="dashicons dashicons-editor-help"></span>
 				<?php esc_html_e( 'Help', 'windcodex-scraperblock' ); ?>
 			</button>
@@ -23,6 +23,10 @@ defined( 'ABSPATH' ) || exit;
 				<a href="https://docs.windcodex.com/docs/scraperblock" target="_blank" rel="noopener" class="gg-help-item">
 					<span class="gg-help-item-icon dashicons dashicons-media-document"></span>
 					<?php esc_html_e( 'Documentation', 'windcodex-scraperblock' ); ?>
+				</a>
+				<a href="https://wordpress.org/support/plugin/windcodex-scraperblock/" target="_blank" rel="noopener" class="gg-help-item">
+					<span class="gg-help-item-icon dashicons dashicons-sos"></span>
+					<?php esc_html_e( 'Support Forum', 'windcodex-scraperblock' ); ?>
 				</a>
 				<a href="https://wordpress.org/support/plugin/windcodex-scraperblock/reviews/#new-post" target="_blank" rel="noopener" class="gg-help-item">
 					<span class="gg-help-item-icon dashicons dashicons-star-filled"></span>
@@ -79,6 +83,11 @@ defined( 'ABSPATH' ) || exit;
 				<div class="gg-form-row">
 					<div class="gg-row-label"><div class="gg-row-title">Per-page Control</div><div class="gg-row-hint">Useful for public pages you want to allow.</div></div>
 					<div class="gg-row-body"><label class="gg-toggle-wrap"><input type="checkbox" name="scraperblock_settings[enable_per_page_control]" value="yes" class="gg-toggle-checkbox" <?php checked( $settings['enable_per_page_control'] ?? 'yes', 'yes' ); ?>><span class="gg-toggle-track"><span class="gg-toggle-thumb"></span></span></label></div>
+				</div>
+
+				<div class="gg-form-row">
+					<div class="gg-row-label"><div class="gg-row-title"><?php esc_html_e( 'Allow AI Search Bots', 'windcodex-scraperblock' ); ?></div><div class="gg-row-hint"><?php esc_html_e( 'Let OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User and MistralAI-User read your pages so your store can appear in AI answers. AI training crawlers stay blocked.', 'windcodex-scraperblock' ); ?></div></div>
+					<div class="gg-row-body"><label class="gg-toggle-wrap"><input type="checkbox" name="scraperblock_settings[allow_ai_search_bots]" value="yes" class="gg-toggle-checkbox" <?php checked( $settings['allow_ai_search_bots'] ?? 'no', 'yes' ); ?>><span class="gg-toggle-track"><span class="gg-toggle-thumb"></span></span></label></div>
 				</div>
 
 				<div class="gg-form-row gg-rate-limit-row">

@@ -3,7 +3,7 @@
  * @wordpress-plugin
  * Plugin Name:       WindCodex ScraperBlock
  * Description:       AI bot blocker for WordPress to protect content from scrapers with user-agent blocking, robots.txt and meta noai controls, per-page rules, and rate limiting.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            WindCodex
  * Author URI:        https://www.windcodex.com
  * License:           GPL v2 or later
@@ -19,7 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SCRAPERBLOCK_VERSION', '1.0.2' );
+define( 'SCRAPERBLOCK_VERSION', '1.0.3' );
 define( 'SCRAPERBLOCK_PLUGIN_FILE', __FILE__ );
 define( 'SCRAPERBLOCK_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SCRAPERBLOCK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

@@ -63,7 +63,7 @@ class ScraperBlock_Public {
 		}
 
 		$lines = array();
-		foreach ( $this->rules->get_bot_blocklist() as $bot ) {
+		foreach ( $this->rules->get_active_blocklist( $settings ) as $bot ) {
 			$lines[] = 'User-agent: ' . $bot;
 			$lines[] = 'Disallow: /';
 		}

@@ -21,8 +21,15 @@ class ScraperBlock_Rules {
 			'enable_rate_limit'         => 'yes',
 			'requests_per_minute'       => 60,
 			'custom_user_agents'        => '',
+			'allow_ai_search_bots'      => 'no',
 		);
 	}
+
+	/**
+	 * AI search and assistant bots. They fetch pages to answer users (and cite
+	 * the store) rather than to train models, so they can be allowed separately.
+	 */
+	public const AI_SEARCH_BOTS = array( 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'Perplexity-User', 'MistralAI-User' );
 
 	public function get_settings(): array {
 		return array_merge(
@@ -47,6 +54,17 @@ class ScraperBlock_Rules {
 			'cohere-ai', 'cohere-training-data-crawler', 'MeltwaterNews', 'Meltwater',
 			'DomainStatsBot', 'WellKnownBot', 'Neevabot', 'MistralAI-User',
 		);
+	}
+
+	/**
+	 * Built-in bots that are blocked with the current settings.
+	 */
+	public function get_active_blocklist( array $settings ): array {
+		$bots = $this->get_bot_blocklist();
+		if ( ( $settings['allow_ai_search_bots'] ?? 'no' ) === 'yes' ) {
+			$bots = array_values( array_diff( $bots, self::AI_SEARCH_BOTS ) );
+		}
+		return $bots;
 	}
 
 	public function get_custom_user_agents( array $settings ): array {
@@ -77,7 +95,7 @@ class ScraperBlock_Rules {
 			return false;
 		}
 
-		$blocklist = array_merge( $this->get_bot_blocklist(), $this->get_custom_user_agents( $settings ) );
+		$blocklist = array_merge( $this->get_active_blocklist( $settings ), $this->get_custom_user_agents( $settings ) );
 		foreach ( $blocklist as $needle ) {
 			if ( '' !== $needle && false !== stripos( $ua, $needle ) ) {
 				return true;

@@ -44,6 +44,7 @@ class ScraperBlock_Admin {
 		$clean['enable_rate_limit']        = ( $input['enable_rate_limit'] ?? '' ) === 'yes' ? 'yes' : 'no';
 		$clean['requests_per_minute']      = max( 1, absint( $input['requests_per_minute'] ?? 60 ) );
 		$clean['custom_user_agents']       = sanitize_textarea_field( (string) ( $input['custom_user_agents'] ?? '' ) );
+		$clean['allow_ai_search_bots']     = ( $input['allow_ai_search_bots'] ?? '' ) === 'yes' ? 'yes' : 'no';
 
 		ScraperBlock_Htaccess::sync_rules( $clean );
 		return $clean;
@@ -256,7 +257,8 @@ class ScraperBlock_Admin {
 	public function plugin_action_links( array $links ): array {
 		array_unshift(
 			$links,
-			'<a href="' . esc_url( admin_url( 'options-general.php?page=scraperblock-settings' ) ) . '">' . esc_html__( 'Settings', 'windcodex-scraperblock' ) . '</a>'
+			'<a href="' . esc_url( admin_url( 'options-general.php?page=scraperblock-settings' ) ) . '">' . esc_html__( 'Settings', 'windcodex-scraperblock' ) . '</a>',
+			'<a href="' . esc_url( 'https://docs.windcodex.com/docs/scraperblock' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Docs', 'windcodex-scraperblock' ) . '</a>'
 		);
 		return $links;
 	}

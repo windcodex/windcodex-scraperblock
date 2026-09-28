@@ -3,7 +3,7 @@ Contributors: windcodex
 Tags: bot protection, ai scraper, content protection, web scraper, woocommerce
 Requires at least: 6.9
 Tested up to: 7.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,6 +34,7 @@ ScraperBlock gives you practical, layered defences against these threats – all
 * **Master protection switch** – Enable or disable all ScraperBlock protections with a single toggle.
 * **50+ default bot signatures** – Pre-loaded, categorized list of known AI scrapers, content crawlers, and price bots including GPTBot (OpenAI), ClaudeBot (Anthropic), Google-Extended, ByteSpider (ByteDance), CCBot (Common Crawl), Diffbot, PerplexityBot, and more. Maintained and updated regularly.
 * **Custom user-agent rules** – Add your own bot signatures, one per line. Target bots not in the default list.
+* **Allow AI search bots** – Optionally let AI search and assistant bots (OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, MistralAI-User) read your pages so your store can appear in AI answers, while AI training crawlers stay blocked. Off by default.
 
 **Blocking Methods**
 * **Runtime user-agent blocking** – Intercepts matching bots at the PHP layer before any content is served. Works on all server types.
@@ -177,6 +178,12 @@ ScraperBlock is a lightweight plugin. User-agent matching is a string comparison
 
 == Changelog ==
 
+= 1.0.3 =
+* Added: "Allow AI Search Bots" setting. When enabled, AI search and assistant bots (OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, MistralAI-User) can read your pages so your store can appear in AI answers, while AI training crawlers stay blocked. Applies to runtime blocking, robots.txt directives and `.htaccess` rules. Off by default, so existing protection is unchanged.
+* Added: "Docs" link next to "Settings" on the Plugins screen.
+* Added: Support Forum link in the Help menu.
+* Improved: Refreshed Help menu design. The menu now closes with the Escape key and is correctly announced to screen readers.
+
 = 1.0.2 =
 * Added: Loads plugin translations via `load_plugin_textdomain()` for full compatibility with translation plugins (Loco Translate, WPML String Translation) and manually installed language packs.
 * Updated: Regenerated the `.pot` translation template with the latest translatable strings.
@@ -199,6 +206,9 @@ ScraperBlock is a lightweight plugin. User-agent matching is a string comparison
 * Live dashboard count (last 24 hours blocked requests).
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Adds an option to allow AI search bots while keeping AI training crawlers blocked (off by default), plus a Docs link on the Plugins screen and Help menu improvements. No database changes – safe to update.
 
 = 1.0.2 =
 Loads plugin translations for full compatibility with translation plugins and language packs. No database changes – safe to update.

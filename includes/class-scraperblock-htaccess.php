@@ -34,7 +34,7 @@ class ScraperBlock_Htaccess {
 
 		$rules = new ScraperBlock_Rules();
 		$uas   = array_merge(
-			$rules->get_bot_blocklist(),
+			$rules->get_active_blocklist( $settings ),
 			$rules->get_custom_user_agents( $settings )
 		);
 		$uas   = array_values( array_unique( array_filter( array_map( 'trim', $uas ) ) ) );
